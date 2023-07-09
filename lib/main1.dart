@@ -57,17 +57,18 @@ class _SecondState extends State<Second> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MyAppBar(),
-        body: ListView.builder(
-          itemCount: myDataList.length,
-          itemBuilder: (context, index) {
-            return Card(
-              child: ListTile(
-                leading: LeadingIcon(index: widget.index),
-                title: Text(myDataList[index]),
-              ),
-            );
-          },
-        ));
+      appBar: MyAppBar(),
+      body: ListView.builder(
+        itemCount: myDataList.length,
+        itemBuilder: (context, index) {
+          return Card(
+            child: ListTile(
+              leading: LeadingIcon(index: widget.index),
+              title: Text(myDataList[index]),
+            ),
+          );
+        },
+      ),
+    );
   }
 }
