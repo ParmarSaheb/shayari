@@ -1,9 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:shayar/self/json_data.dart';
+import 'package:shayar/gotopage.dart';
+import 'package:shayar/json_data.dart';
 import 'leading_icon.dart';
-import 'main1.dart';
+import 'second.dart';
 import 'my_appbar.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Love Shayari',
+      title: 'Evergreen Shayri',
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           color: Colors.teal,
@@ -38,13 +39,11 @@ class First extends StatefulWidget {
 }
 
 class _FirstState extends State<First> {
-  Color bgcolor = const Color.fromARGB(255, 170, 211, 201);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: bgcolor,
-      appBar: myAppBar("Love Shayri"),
+      backgroundColor: const Color.fromARGB(255, 35, 1, 58),
+      appBar: myAppBar("Evergreen Shayri", context, isShowAction: true),
       body: MainDataList(),
     );
   }
@@ -54,21 +53,31 @@ class _FirstState extends State<First> {
       itemCount: datalist.length,
       itemBuilder: (context, index) {
         return Card(
-          child: ListTile(
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: ((context) => Second(index: index)),
+          margin: const EdgeInsets.all(5),
+          child: Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(colors: [
+              Color.fromARGB(255, 137, 255, 243),
+              Color.fromARGB(255, 198, 178, 255)
+            ])),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: ListTile(
+                onTap: () {
+                  goToPage(context, Second(index: index));
+                },
+                leading: LeadingIcon(
+                  index: index,
                 ),
-              );
-            },
-            tileColor: const Color.fromARGB(255, 202, 250, 245),
-            leading: LeadingIcon(
-              index: index,
-            ),
-            title: Text(
-              datalist[index][0].toString(),
+                title: Text(
+                  datalist[index][0].toString(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 22, 68, 64),
+                    fontSize: 18,
+                  ),
+                ),
+              ),
             ),
           ),
         );
