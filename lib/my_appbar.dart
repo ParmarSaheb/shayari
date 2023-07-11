@@ -65,7 +65,11 @@ PreferredSizeWidget myAppBar(String title, BuildContext context,
                                   showAboutDialog(
                                     context: (context),
                                     applicationName: "Love Shayri",
-                                    applicationVersion: "1.0.1",
+                                    applicationIcon: SizedBox(
+                                      height: 60,
+                                      width: 60,
+                                      child: Image.asset("myassets/app_icon.png")),
+                                    applicationVersion: "Version 2.1.1",
                                     children: [
                                       const Text("Managed by Nayan Parmar"),
                                     ],
