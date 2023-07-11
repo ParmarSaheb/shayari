@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'data.dart';
+import 'package:shayar/self/json_data.dart';
 import 'leading_icon.dart';
 import 'main1.dart';
 import 'my_appbar.dart';
@@ -38,33 +38,41 @@ class First extends StatefulWidget {
 }
 
 class _FirstState extends State<First> {
+  Color bgcolor = const Color.fromARGB(255, 170, 211, 201);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(),
-      body: ListView.builder(
-        itemCount: Datas.arr.length,
-        itemBuilder: (context, index) {
-          return Card(
-            child: ListTile(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Second(
-                            index: index,
-                          )),
-                );
-              },
-              tileColor: const Color.fromARGB(255, 202, 250, 245),
-              leading: LeadingIcon(
-                index: index,
-              ),
-              title: Text(Datas.arr[index]),
+      backgroundColor: bgcolor,
+      appBar: myAppBar("Love Shayri"),
+      body: MainDataList(),
+    );
+  }
+
+  ListView MainDataList() {
+    return ListView.builder(
+      itemCount: datalist.length,
+      itemBuilder: (context, index) {
+        return Card(
+          child: ListTile(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) => Second(index: index)),
+                ),
+              );
+            },
+            tileColor: const Color.fromARGB(255, 202, 250, 245),
+            leading: LeadingIcon(
+              index: index,
             ),
-          );
-        },
-      ),
+            title: Text(
+              datalist[index][0].toString(),
+            ),
+          ),
+        );
+      },
     );
   }
 }

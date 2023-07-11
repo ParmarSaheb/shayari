@@ -1,12 +1,14 @@
+import 'package:flutter/material.dart';
 
-  import 'package:flutter/material.dart';
-
-AppBar MyAppBar() {
-    return AppBar(
-      title: const Text("Love Shayri"),
-      actions: const [
-        Icon(Icons.share),
-        Icon(Icons.more_vert),
-      ],
-    );
-  }
+AppBar myAppBar(String title) {
+  return AppBar(
+    title: Text(
+      title,
+     
+    ),
+    actions: const [
+      Icon(Icons.share),
+      Icon(Icons.more_vert),
+    ],
+  );
+}
